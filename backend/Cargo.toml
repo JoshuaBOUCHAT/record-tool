@@ -1,0 +1,10 @@
+[package]
+name = "backend"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+actix = "0.13.5"
+actix-session = { version = "0.10.1", features = ["cookie-session"] }
+actix-web = { version = "4.11.0", features = ["rustls"] }
+actix-web-actors = "4.3.1"

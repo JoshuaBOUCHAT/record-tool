@@ -13,21 +13,11 @@ pub struct SetRequest {
     value: String,
 }
 
-#[derive(Deserialize)]
-pub struct GetRequest {
-    key: String,
-}
-
 #[derive(Serialize)]
 pub struct GetResponse {
     value: Option<String>,
 }
 
-#[derive(Serialize)]
-pub struct RedisHandlerError {
-    error: String,
-    code: String,
-}
 #[derive(Serialize)]
 pub struct SetResponse {
     already_contains: bool,

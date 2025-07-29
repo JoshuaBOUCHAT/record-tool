@@ -17,7 +17,7 @@ use actix_cors::Cors;
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new().service(
-            web::scope("/api")
+            web::scope("")
                 .wrap(Cors::permissive())
                 .route("/ping", get().to(handle_ping))
                 .route("/ws/", get().to(ws_handler))
@@ -25,7 +25,7 @@ async fn main() -> std::io::Result<()> {
                 .route("/get/{key}", get().to(redis_get)),
         )
     })
-    .bind(("127.0.0.1", 8070))?
+    .bind(("0.0.0.0", 8000))?
     .run()
     .await
 }

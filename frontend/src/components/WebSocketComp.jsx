@@ -5,7 +5,7 @@ export default function WebSocketTest() {
     const [ws, setWs] = useState(null);
 
     useEffect(() => {
-        const socket = new WebSocket("ws://127.0.0.1/api/ws/");
+        const socket = new WebSocket("wss://127.0.0.1/api/ws/");
         setWs(socket);
 
         socket.onopen = () => {

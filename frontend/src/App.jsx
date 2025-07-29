@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import WebSocketTest from './components/WebSocketComp'
+import MicroPhoneComp from './components/microphone/MicroPhoneComp'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,9 @@ function App() {
       </p>
       <div>
         <WebSocketTest />
+      </div>
+      <div>
+        <MicroPhoneComp />
       </div>
     </>
   )

@@ -41,8 +41,8 @@ pub async fn redis_set(elem: web::Json<SetRequest>) -> Result<HttpResponse, Box<
     }))
 }
 
-pub async fn redis_get(elem: web::Json<GetRequest>) -> Result<HttpResponse, Box<dyn Error>> {
+pub async fn redis_get(key: web::Path<String>) -> Result<HttpResponse, Box<dyn Error>> {
     let mut conn = REDIS_CLIENT.get_connection()?;
-    let get_result: Option<String> = conn.get(elem.key.as_str())?;
+    let get_result: Option<String> = conn.get(key.as_str())?;
     Ok(HttpResponse::Ok().json(GetResponse { value: get_result }))
 }

@@ -16,13 +16,14 @@ use actix_cors::Cors;
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
-        App::new()
-            .wrap("/api/")
-            .wrap(Cors::permissive())
-            .route("/ping", get().to(handle_ping))
-            .route("/ws/", get().to(ws_handler))
-            .route("/set", post().to(redis_set))
-            .route("/get", get().to(redis_get))
+        App::new().service(
+            web::scope("/api")
+                .wrap(Cors::permissive())
+                .route("/ping", get().to(handle_ping))
+                .route("/ws/", get().to(ws_handler))
+                .route("/set", post().to(redis_set))
+                .route("/get/{key}", get().to(redis_get)),
+        )
     })
     .bind(("127.0.0.1", 8070))?
     .run()
